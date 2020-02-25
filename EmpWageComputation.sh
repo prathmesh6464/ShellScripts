@@ -14,12 +14,14 @@ presentee=$((RANDOM%2))
 if(($presentee==1))
 then
 	dayPartTimeOrFullTime=$((RANDOM%2))
-	if(($dayPartTimeOrFullTime==1))
-	then
-		echo "Full Day Employee Wage Is " $(($WAGE*8))
-	else
-		echo "Part Time Employee Wage Is " $(($WAGE*4))
-	fi
+	case $dayPartTimeOrFullTime in
+		0)
+			echo "Full Day Employee Wage Is " $(($WAGE*8));;
+		1)
+			echo "Part Time Employee Wage Is " $(($WAGE*4));;
+		*)
+			echo "Invalid Number";;
+	esac
 else
 	echo "Employee Is Absent Can Not Check Daily Wage "
 fi
