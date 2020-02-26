@@ -2,38 +2,52 @@
 #TAKING INPUT FROM USER
 #CONSTANT VARIABLE
 WAGE=20
+DAILY_WAGE=$(($WAGE*8))
+PART_TIME_WAGE=$(($WAGE*4))
 
 
 #VARIABLE
 day=1
-monthWage=0
+declare -A dailyWageWithTotalWage
 
 
-#FUNCTION CREATED TO CALCULATE MONTHLY WAGES		
-function getMonthlyWages()
+#FUNCTION CREATED TO CALCULATE DAILY WAGE WITH TOTAL WAGE
+function getWageWithTotalWage()
 {
 	#TAKING INPUT FROM RANDOM NUMBER (PART TIME OR FULL TIME)
 	while(($day<=20))
 	do
-		decision=$((RANDOM%2))
+		decision=$((RANDOM%2+1))
 		if(($decision==2))
 		then
-			#CALCULATING DAILY WAGES
-			monthWage=$(($(($WAGE*8))+$monthWage))
-			echo "Full Time Employe Salary is " $monthWage
+			#CALCULATING DAILY WAGES USING DICTIONARY
+			
+			dailyWageWithTotalWage[$DAILY_WAGE]=$(("${dailyWageWithTotalWage[$DAILY_WAGE]}+$((DAILY_WAGE))"))
+			echo "Full time Daily Wage : $DAILY_WAGE Total Wage : ${dailyWageWithTotalWage[$DAILY_WAGE]}"
 		elif(($decision==1))
 		then
-			#CALCULATING DAILY WAGES
-			monthWage=$(($(($WAGE*4))+$monthWage))
+			#CALCULATING DAILY WAGES USING DICTIONARY
+			dailyWageWithTotalWage[$PART_TIME_WAGE]=$(("${dailyWageWithTotalWage[$PART_TIME_WAGE]}+$((PART_TIME_WAGE))"))
+			echo "Part Time Daily Wage : $PART_TIME_WAGE Total Wage : ${dailyWageWithTotalWage[$PART_TIME_WAGE]}"
 		fi
 		((day++))
 	done
-
-
-#DISPLAYING MONTH WAGE
-echo "Daily Wages Sum : "$monthWage
 }
 
 
-#FUNCTION CALLED
-getMonthlyWages
+#FUCNTION CALLED
+getWageWithTotalWage
+
+
+#DISPLAY DICTIONARY DATA
+
+
+
+
+
+
+
+
+
+
+
