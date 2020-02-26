@@ -9,7 +9,6 @@ PART_TIME_WAGE=$(($WAGE*4))
 #VARIABLE
 day=1
 declare -A dailyWageWithTotalWage
-declare -A dayAndDailyWageWithTotalWage
 
 
 #FUNCTION CREATED TO CALCULATE DAILY WAGE WITH TOTAL WAGE
