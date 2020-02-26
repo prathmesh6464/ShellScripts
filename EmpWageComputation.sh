@@ -21,7 +21,6 @@ function getWageWithTotalWage()
 		if(($decision==2))
 		then
 			#CALCULATING DAILY WAGES USING DICTIONARY
-			
 			dailyWageWithTotalWage[$DAILY_WAGE]=$(("${dailyWageWithTotalWage[$DAILY_WAGE]}+$((DAILY_WAGE))"))
 			echo "Full time Daily Wage : $DAILY_WAGE Total Wage : ${dailyWageWithTotalWage[$DAILY_WAGE]}"
 		elif(($decision==1))
@@ -38,8 +37,6 @@ function getWageWithTotalWage()
 #FUCNTION CALLED
 getWageWithTotalWage
 
-
-#DISPLAY DICTIONARY DATA
 
 
 
