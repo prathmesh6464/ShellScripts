@@ -9,6 +9,7 @@ PART_TIME_WAGE=$(($WAGE*4))
 #VARIABLE
 day=1
 declare -A dailyWageWithTotalWage
+declare -A dayAndDailyWageWithTotalWage
 
 
 #FUNCTION CREATED TO CALCULATE DAILY WAGE WITH TOTAL WAGE
@@ -21,14 +22,13 @@ function getWageWithTotalWage()
 		if(($decision==2))
 		then
 			#CALCULATING DAILY WAGES USING DICTIONARY
-			
 			dailyWageWithTotalWage[$DAILY_WAGE]=$(("${dailyWageWithTotalWage[$DAILY_WAGE]}+$((DAILY_WAGE))"))
-			echo "Full time Daily Wage : $DAILY_WAGE Total Wage : ${dailyWageWithTotalWage[$DAILY_WAGE]}"
+			echo "Day : $day Fulltime Daily Wage : $DAILY_WAGE Total Wage : ${dailyWageWithTotalWage[$DAILY_WAGE]}"
 		elif(($decision==1))
 		then
 			#CALCULATING DAILY WAGES USING DICTIONARY
 			dailyWageWithTotalWage[$PART_TIME_WAGE]=$(("${dailyWageWithTotalWage[$PART_TIME_WAGE]}+$((PART_TIME_WAGE))"))
-			echo "Part Time Daily Wage : $PART_TIME_WAGE Total Wage : ${dailyWageWithTotalWage[$PART_TIME_WAGE]}"
+			echo "Day : $day Part Time Daily Wage : $PART_TIME_WAGE Total Wage : ${dailyWageWithTotalWage[$PART_TIME_WAGE]}"
 		fi
 		((day++))
 	done
@@ -38,8 +38,6 @@ function getWageWithTotalWage()
 #FUCNTION CALLED
 getWageWithTotalWage
 
-
-#DISPLAY DICTIONARY DATA
 
 
 
